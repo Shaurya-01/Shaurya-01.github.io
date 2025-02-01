@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Font Animation</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+      .text-box {
+        font-size: 6px;
+        color: crimson;
+        text-align: center;
+        transition: font-size 0.2s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-box" id="fontText">GROWING TEXT</div>
+    <script>
+      const fontTextElement = document.querySelector("#fontText");
+      let currentSize = 6;
+      let isGrowing = true;
+
+      function changeFontSize() {
+        if (isGrowing) {
+          currentSize++;
+          fontTextElement.style.fontSize = `${currentSize}px`;
+          if (currentSize >= 45) {
+            isGrowing = false;
+            fontTextElement.textContent = "SHRINKING TEXT";
+            fontTextElement.style.color = "dodgerblue";
+          }
+        } else {
+          currentSize--;
+          fontTextElement.style.fontSize = `${currentSize}px`;
+          if (currentSize <= 6) {
+            isGrowing = true;
+            fontTextElement.textContent = "GROWING TEXT";
+            fontTextElement.style.color = "crimson";
+          }
+        }
+      }
+
+      setInterval(changeFontSize, 200);
+    </script>
+  </body>
+</html>

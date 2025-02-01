@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Math Operations</title>
+    <style>
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      input[type="number"] {
+        width: 150px;
+        padding: 12px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .btn {
+        padding: 12px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #5c6bc0;
+        color: white;
+        border: none;
+      }
+      .btn:hover {
+        background-color: #3f4b8f;
+      }
+      h2 {
+        color: #333;
+      }
+      h3 {
+        color: #333;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Basic Math Operations</h2>
+      <input id="input1" type="number" placeholder="First number" />
+      <input id="input2" type="number" placeholder="Second number" />
+      <br />
+      <button class="btn" onclick="performCalculation('+')">Add</button>
+      <button class="btn" onclick="performCalculation('-')">Subtract</button>
+      <button class="btn" onclick="performCalculation('*')">Multiply</button>
+      <button class="btn" onclick="performCalculation('/')">Divide</button>
+      <h3 id="output">Result will appear here</h3>
+    </div>
+
+    <script>
+      function performCalculation(op) {
+        const input1 = parseFloat(document.getElementById('input1').value);
+        const input2 = parseFloat(document.getElementById('input2').value);
+        let output;
+
+        if (isNaN(input1) || isNaN(input2)) {
+          output = 'Please enter valid numbers!';
+        } else {
+          switch (op) {
+            case '+':
+              output = input1 + input2;
+              break;
+            case '-':
+              output = input1 - input2;
+              break;
+            case '*':
+              output = input1 * input2;
+              break;
+            case '/':
+              output = input2 === 0 ? 'Cannot divide by zero!' : input1 / input2;
+              break;
+            default:
+              output = 'Invalid operation!';
+          }
+        }
+        document.getElementById('output').innerText = `Result: ${output}`;
+      }
+    </script>
+  </body>
+</html>
